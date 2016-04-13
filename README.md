@@ -5,7 +5,7 @@ Install Nginx on the web node and balance requests to the application nodes in a
 
 Used nginx playbook from  https://github.com/geerlingguy/ansible-role-nginx 
 
-## Note: Niginx was installed on both web and app instances but configured to perform different tasks  as requested for this task. 
+# Note: Niginx was installed on both web and app instances but configured to perform different tasks  as required for this task. 
 
 # Nginx :
 	- set variables { ansible/roles/nginx/defaults/main.yml}
