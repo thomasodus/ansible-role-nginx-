@@ -1,5 +1,5 @@
 ---
-- hosts: aws_web
+- hosts: aws_web, aws_app
   user: root
   roles:
     - nginx
