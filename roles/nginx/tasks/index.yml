@@ -1,0 +1,8 @@
+---
+
+- name: index file
+  template:
+    src: index.j2
+    dest: /usr/share/nginx/html/index.html
+    owner: nginx
+    group: nginx

@@ -1,0 +1,20 @@
+{% for vhost in nginx_vhosts %}
+upstream {{ vhost.name }} { 
+{% endfor %}
+{% for apps in upstreams_servers %}
+    server {{apps.server}};
+{% endfor %} 	
+}
+
+{% for vhost in nginx_vhosts %}
+	server {
+        listen {{ vhost.listen | default('80 default_server') }};
+
+        location / {
+            proxy_pass http://{{ vhost.name }};
+        }
+
+    
+}
+{% endfor %}
+    

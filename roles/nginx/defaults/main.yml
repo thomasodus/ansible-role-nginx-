@@ -1,0 +1,64 @@
+---
+# Used only for Debian/Ubuntu installation, as the -t option for apt.
+nginx_default_release: ""
+
+# Use the official Nginx PPA for Ubuntu, and the version to use if so.
+nginx_ppa_use: false
+nginx_ppa_version: stable
+
+# The name of the nginx apt/yum package to install.
+nginx_package_name: "nginx"
+
+nginx_worker_processes: "1"
+nginx_worker_connections: "1024"
+nginx_multi_accept: "off"
+
+nginx_error_log: "/var/log/nginx/error.log warn"
+nginx_access_log: "/var/log/nginx/access.log main buffer=16k"
+
+nginx_sendfile: "on"
+nginx_tcp_nopush: "on"
+nginx_tcp_nodelay: "on"
+
+nginx_keepalive_timeout: "65"
+nginx_keepalive_requests: "100"
+
+nginx_client_max_body_size: "64m"
+
+nginx_proxy_cache_path: ""
+
+nginx_extra_conf_options: ""
+# Example extra main options, used within the main nginx's context:
+#   nginx_extra_conf_options: |
+#     env VARIABLE;
+#     include /etc/nginx/main.d/*.conf;
+
+nginx_extra_http_options: ""
+# Example extra http options, printed inside the main server http config:
+#    nginx_extra_http_options: |
+#      proxy_buffering    off;
+#      proxy_set_header   X-Real-IP $remote_addr;
+#      proxy_set_header   X-Scheme $scheme;
+#      proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+#      proxy_set_header   Host $http_host;
+
+nginx_remove_default_vhost: true
+nginx_vhosts: 
+# Example vhost below, showing all available options:
+ - listen: "80 default_server" # default: "80 default_server"
+   server_name: "{{ ansible_nodename }}"
+   root: "{{ nginx_root_dir }}"
+   index: "index.html index.htm" # default: "index.html index.htm"
+   name: aws_app
+#
+#   # Properties that are only added if defined:
+   error_log: "/var/log/nginx/example.com-error.log error"
+   access_log: "/var/log/nginx/example.com-access.log"
+#   error_log: ""
+#   extra_parameters: "" # Can be used to add extra config blocks (multiline).
+ 
+#   strategy: "ip_hash" # "least_conn", etc.
+upstreams_servers: 
+   - { server: ec2-52-51-6-126.eu-west-1.compute.amazonaws.com}
+   - { server: ec2-52-50-17-184.eu-west-1.compute.amazonaws.com}
+ 

@@ -1,0 +1,25 @@
+Ansible 
+
+Be pragmatic about why you've done things in a certain way.
+They want to see your thought process and capabilities.
+
+# Running Ansible against the instances
+
+Used nginx playbook  from  https://github.com/geerlingguy/ansible-role-nginx 
+
+Note: Niginx was installed on both web and app insances but confugired to perform diffrent tasks  as requested for this task. 
+
+Nginx :
+	- set variables { ansible/roles/nginx/defaults/main.yml}
+		upstreams_servers:
+		   - { server: ec2-52-51-6-126.eu-west-1.compute.amazonaws.com}    #  aws app server instance  FQDN  set manually  
+		   - { server: ec2-52-50-17-184.eu-west-1.compute.amazonaws.com}
+    - aws instance host names must contain WEB for webserver and APP for app  servers 
+	  /ansible/roles/nginx/tasks/vhost.yml  apply diffrent vhost files per-server functionality 
+	   
+
+
+If you had more time what you would have done differently. 
+
+- use ansible aws inventory script ec2.py.  maintaining an inventory file might not be the best approach, because hosts may come and go over time
+- install node.js or other application server for testing.
