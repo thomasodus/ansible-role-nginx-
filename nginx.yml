@@ -1,0 +1,5 @@
+---
+- hosts: aws_web
+  user: root
+  roles:
+    - nginx
