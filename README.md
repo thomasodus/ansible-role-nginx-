@@ -1,13 +1,13 @@
-# ansible-role-nginx-
+## ansible-role-nginx-
 Install Nginx on the web node and balance requests to the application nodes in a round-robin fashion
 
-# Running Ansible against new instances
+## Running Ansible against new instances
 
 Used nginx playbook from  https://github.com/geerlingguy/ansible-role-nginx 
 
-Note: Niginx was installed on both web and app instances but configured to perform different tasks  as requested for this task. 
+## Note: Niginx was installed on both web and app instances but configured to perform different tasks  as requested for this task. 
 
-Nginx :
+# Nginx :
 	- set variables { ansible/roles/nginx/defaults/main.yml}
 		upstreams_servers:
 		   - { server: ec2-52-51-6-126.eu-west-1.compute.amazonaws.com}    #  aws app server instance  FQDN  set manually  
