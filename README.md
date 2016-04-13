@@ -13,7 +13,7 @@ Used nginx playbook from  https://github.com/geerlingguy/ansible-role-nginx
 		   - { server: ec2-52-51-6-126.eu-west-1.compute.amazonaws.com}    #  aws app server instance  FQDN  set manually  
 		   - { server: ec2-52-50-17-184.eu-west-1.compute.amazonaws.com}
     
-- aws instance host names must contain WEB for webserver and APP for app  servers 
+       - aws instance host names must contain WEB for webserver and APP for app  servers 
 	  /ansible/roles/nginx/tasks/vhost.yml  apply diffrent vhost files per-server functionality base on the hostname having web or app 
 
 
